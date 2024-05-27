@@ -1,0 +1,14 @@
+
+
+/* Estilos para dispositivos móveis (celulares) */
+@media only screen and (max-width: 990px) {
+/* Define a cor das bordas */
+li {
+    border: 1px solid #ccc; /* Cor cinza para as bordas */  
+}
+
+/* Para o caso específico de dois elementos compartilharem bordas, você pode usar um seletor mais específico ou uma classe adicional */
+li:last-child {
+    border-top-color: transparent; /* Torna a borda esquerda transparente */
+}
+}

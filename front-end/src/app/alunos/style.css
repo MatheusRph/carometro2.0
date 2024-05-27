@@ -1,0 +1,14 @@
+/* Estilos para dispositivos móveis (celulares) */
+@media only screen and (max-width: 576px) {
+    .imagem{
+        width: 300px;
+        height: 350px;
+    }
+
+  }
+  
+  /* Estilos para tablets */
+  @media only screen and (min-width: 577px) and (max-width: 1024px) {
+    
+  }
+  

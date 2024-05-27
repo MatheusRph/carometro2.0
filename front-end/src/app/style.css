@@ -1,0 +1,28 @@
+/* Estilos para dispositivos móveis (celulares) */
+@media only screen and (max-width: 576px) {
+    .form-pai{
+        background-color: white;
+        border-radius: 20px;
+        width: 95%;    
+    }
+
+    .input-wrapper{
+        height: 8vh;
+        font-size: x-large;
+        width: 80%;
+        background-color: white;
+        border: solid red;
+    }
+    
+    .search-img{
+        margin-left: 17%;
+    }
+
+  }
+  
+  /* Estilos para tablets */
+  @media only screen and (min-width: 577px) and (max-width: 1024px) {
+    
+  }
+  
+  

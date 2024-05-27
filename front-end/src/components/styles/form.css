@@ -1,0 +1,35 @@
+body, html{
+    margin: 0;
+}
+
+.form-pai{
+    background-color: white;
+    border-radius: 20px;
+    width: 70vh;    
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.interaction{
+    margin: 50px;
+}
+
+.button-avancar{
+    font-size: small;
+    height: 40px;
+    width: 100%;
+}
+
+.input-usuario{
+    height: 6.5vh;
+    font-size: small;
+    color: black;
+}
+
+/* Remover a animação ao clicar em um input do Bootstrap */
+.form-control:focus {
+    box-shadow: none; /* Remover sombra */
+    border-color: #ced4da; /* Manter a cor da borda padrão */
+    background-color: lightgray; /* Alterar a cor de fundo */
+  }
+  

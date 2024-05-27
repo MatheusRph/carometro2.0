@@ -1,0 +1,25 @@
+.col1{
+    height: 20vh;
+}
+
+/* createpaste.css */
+.button-add-paste {
+    background-color: #FBF8F8; /* Alterando a cor de fundo */
+    margin: 5vh;
+    width: 40vh;
+    height: 10vh; /* Aumentando a altura para 30vh */
+    -webkit-box-shadow: 5px 6px 5px 0px rgba(0,0,0,0.61); 
+    box-shadow: 5px 6px 5px 0px rgba(0,0,0,0.61);
+}
+
+.block{
+    height: 100px;
+    border: solid 3px black;
+}
+
+/* createpaste.css */
+.button-add-paste p {
+    font-size: xx-large;
+    margin: 1vh;
+    width: 100%;
+}
