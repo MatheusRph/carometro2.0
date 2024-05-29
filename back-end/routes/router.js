@@ -16,7 +16,7 @@ const turmaController = require('../controllers/turma');
 const fileController = require('../controllers/multer');
 const checkController = require('../controllers/check');
 
-router.post('/teste', testeController.teste)
+router.post('/teste', upload.single('image'), testeController.uploadFile);
 
 // Rota para retornar todos os usuários
 router.get('/usuario', usuarioController.getAll);
@@ -29,15 +29,15 @@ router.post('/usuario', usuarioController.createrUsuario);
 router.put('/usuario/:cpf', usuarioController.updateUser);
 
 // Rota para retornar todas as turmas
+router.post('/turmas', upload.single('image'), turmaController.createTurma);
 router.get('/turmas', turmaController.getAll);
-router.post('/turmas', turmaController.createTurma);
 router.put('/turmas/:codigo', turmaController.updateTurma);
 
 // Rota para deletar um usuário
 router.delete('/usuario/:id', usuarioController.deleteUser);
 
 // Rota para o upload de arquivo
-router.put('/upload', upload.single('image'), fileController.uploadFile);
+router.post('/upload', upload.single('image'), fileController.uploadFile);
 
 // Rota para servir a página HTML de upload
 // router.get('/', (req, res) => {

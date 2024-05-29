@@ -4,7 +4,9 @@ const path = require('path');
 
 exports.uploadFile = async (req, res) => {
     try {
-        const { codigo } = req.body;
+        const { codigo, descricao, inicio, fim } = req.body;
+
+        console.log(req.body)
 
         if (!req.file) {
             return res.status(400).send('Nenhum arquivo enviado ou o nome do campo do formulário está incorreto.');

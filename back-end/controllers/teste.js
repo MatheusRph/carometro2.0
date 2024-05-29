@@ -1,39 +1,60 @@
-// Importação do modelo de dados Usuario
-const Usuario = require('../models/usuario');
+// controllers/multer.js
 const Turma = require('../models/turma');
-const Usuario_Turma = require('../models/usuarios_turmas');
-const { where, json } = require('sequelize');
+const path = require('path');
 
-exports.teste = async (req, res) => {
-    console.log(req.body);
+exports.uploadFile = async (req, res) => {
+
+    const textErros = {
+        codigo: 'O código é obrigatório',
+        descricao: 'A descrição é obrigatória',
+        inicio: 'A data de início é obrigatória',
+        fim: 'A data de fim é obrigatória'
+    }
 
     try {
-        const { nomeTurma, descricao, inicio, fim } = req.body;
-        
+        const { codigo, descricao, inicio, fim } = req.body;
+
+        const fileName = '/uploads/' + req.file.filename;
+
+        const camposObrigatorios = ['codigo', 'descricao', 'inicio', 'fim'];
+
+        for (let campo of camposObrigatorios) {
+            if (!req.body[campo]) {
+                console.log(textErros[campo])
+                return res.send(textErros[campo]);
+            }
+        }
+
+        const turmaCadastrada = await Turma.findOne({ where: { codigo: codigo } });
+
+        if (turmaCadastrada) {
+            return res.json({
+                ok: false,
+                message: 'Turma ja cadastrada'
+            });
+        }
+
         const createTurma = await Turma.create({
-            codigo: nomeTurma,
+            codigo: codigo,
             descricao: descricao,
             inicio: inicio,
             fim: fim,
-            fotos: 'vazio'
+            fotos: fileName // Assuming 'fotos' is the field where you want to store the file name
         });
 
         if (createTurma) {
             return res.json({
-                ok: true,
-                message: "Turma criada com sucesso'"
+                ok: false,
+                message: 'Turma criada'
             });
         } else {
-            return res.status(500).json({
+            return res.json({
                 ok: false,
-                message: 'Erro ao criar a turma'
+                message: 'Erro ao criar turma'
             });
         }
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            ok: false,
-            message: 'Internal Server Error',
-        });
+    } catch (error) {
+        console.error('Erro ao fazer upload do arquivo:', error);
+        res.status(500).send('Erro ao fazer upload do arquivo. Por favor, tente novamente.');
     }
 };

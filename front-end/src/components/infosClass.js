@@ -5,14 +5,10 @@ import { useState } from 'react'
 
 export default function InfoClass() {
 
-    const [ image, setImage] = useState('');
-
-    const [codigo, setcodigo] = useState('');
-
+    const [image, setImage] = useState('');
+    const [codigo, setCodigo] = useState('');
     const [descricao, setDescricao] = useState('');
-
     const [inicio, setInicio] = useState('');
-
     const [fim, setFim] = useState('');
 
     const onChangeImage = (evt) => {
@@ -20,7 +16,7 @@ export default function InfoClass() {
     }
 
     const onChangecodigo = (evt) => {
-        setcodigo(evt.target.value);
+        setCodigo(evt.target.value);
     };
 
     const onChangeDescricao = (evt) => {
@@ -37,45 +33,32 @@ export default function InfoClass() {
 
     const sendForm = async (evt) => {
         evt.preventDefault();
-        console.log(image)
-
+        
         try {
-            //Resposta e sets das infos
-            const response = await fetch('http://localhost:3000/turmas', {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                }, body: JSON.stringify({ codigo, descricao, inicio, fim })
-            });
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-
-            const json = await response.json();
-            
-            console.log(json);
-
-            if (json.ok === true) {
-                console.log('Turma criada')
-            }
-
-            //Resposta e sets da imagem
             const formData = new FormData();
             formData.append('image', image);
-            formData.append('codigo', codigo)
+            formData.append('codigo', codigo);
+            formData.append('descricao', descricao);
+            formData.append('inicio', inicio);
+            formData.append('fim', fim);
 
-            const responseFile = await fetch('http://localhost:3000/upload', {
-                method: 'PUT',
-                body: formData, // Passa o objeto File diretamente como corpo da requisição
+            const responseFile = await fetch('http://localhost:3000/turmas', {
+                method: 'POST',
+                body: formData
             });   
                         
             if (!responseFile.ok) {
-                throw new Error('Erro na response file' + response.statusText)
+                throw new Error('Erro na response file ' + responseFile.statusText);
             }
-        } catch (err) {
 
+            const json = await responseFile.json()
+            console.log(json)
+            
+            // Handle success response here if needed
+            
+        } catch (err) {
+            console.error('Error:', err.message);
+            // Handle error
         }
     }
 

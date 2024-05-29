@@ -14,7 +14,6 @@ exports.getAll = async (req, res) => {
 };
 
 exports.createTurma = async (req, res) => {
-    console.log(req.body);
 
     const textErros = {
         codigo: 'O código é obrigatório',
@@ -25,6 +24,9 @@ exports.createTurma = async (req, res) => {
 
     try {
         const { codigo, descricao, inicio, fim } = req.body;
+
+        const fileName = '/uploads/' + req.file.filename;
+
         const camposObrigatorios = ['codigo', 'descricao', 'inicio', 'fim'];
 
         for (let campo of camposObrigatorios) {
@@ -43,23 +45,28 @@ exports.createTurma = async (req, res) => {
             });
         }
 
-        const createTurma = await Turma.create(req.body);
+        const createTurma = await Turma.create({
+            codigo: codigo,
+            descricao: descricao,
+            inicio: inicio,
+            fim: fim,
+            fotos: fileName // Assuming 'fotos' is the field where you want to store the file name
+        });
 
         if (createTurma) {
             return res.json({
-                ok: true,
-                message: 'Turma criada',
-                id: codigo,
+                ok: false,
+                message: 'Turma criada'
             });
         } else {
             return res.json({
                 ok: false,
-                message: 'Erro ao criar a turma'
+                message: 'Erro ao criar turma'
             });
-        }         
+        }
     } catch (error) {
-        console.error('Erro ao criar turma:', error);
-        return res.status(500).send('Erro ao criar turma. Por favor, tente novamente.');
+        console.error('Erro ao fazer upload do arquivo:', error);
+        res.status(500).send('Erro ao fazer upload do arquivo. Por favor, tente novamente.');
     }
 };
 
