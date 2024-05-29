@@ -2,6 +2,8 @@
 // Neste arquivo estão definidas todas as rotas do projeto.
 // Em projetos com muitas rotas, é possível dividir as rotas em vários arquivos.
 
+const testeController = require('../controllers/teste')
+
 // Importações de módulos
 const express = require('express');
 const router = express.Router();
@@ -13,6 +15,8 @@ const usuarioController = require('../controllers/usuario');
 const turmaController = require('../controllers/turma');
 const fileController = require('../controllers/multer');
 const checkController = require('../controllers/check');
+
+router.post('/teste', testeController.teste)
 
 // Rota para retornar todos os usuários
 router.get('/usuario', usuarioController.getAll);
@@ -33,12 +37,12 @@ router.put('/turmas/:codigo', turmaController.updateTurma);
 router.delete('/usuario/:id', usuarioController.deleteUser);
 
 // Rota para o upload de arquivo
-router.post('/upload', upload.single('image'), fileController.uploadFile);
+router.put('/upload', upload.single('image'), fileController.uploadFile);
 
 // Rota para servir a página HTML de upload
-router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../index.html'));
-});
+// router.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../index.html'));
+// });
 
 // INSERIR OUTRAS ROTAS -->
 /* router.get('/turmas', turmasController.getAll)

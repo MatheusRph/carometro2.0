@@ -9,7 +9,7 @@ export default function Password() {
     setSenha(evt.target.value);
   }
 
-  const cpf = localStorage.getItem('key');
+  const cpf = sessionStorage.getItem('key');
 
   // Envia a senha para a API
   const sendPassword = async (evt) => {
@@ -32,6 +32,7 @@ export default function Password() {
 
       if (json.ok === true) {
         window.location.replace('/');
+        sessionStorage.clear('key')
       }
 
     } catch (err) {

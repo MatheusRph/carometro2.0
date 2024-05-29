@@ -1,33 +1,34 @@
 // Importação do modelo de dados Usuario
-const { CharsetToEncoding } = require('mysql2');
-const Usuario = require('../models/usuario'); // Alterado de Usuarios para Usuario
-const Usuario_Turma = require('../models/usuarios_turmas')
-const { where } = require('sequelize');
+const Usuario = require('../models/usuario');
+const Turma = require('../models/turma');
+const Usuario_Turma = require('../models/usuarios_turmas');
+const { where, json } = require('sequelize');
 
+exports.teste = async (req, res) => {
+    console.log(req.body);
 
-exports.getCpf = async (req, res) => {
     try {
-        const cpf = req.body.cpf
+        const { nomeTurma, descricao, inicio, fim } = req.body;
+        
+        const createTurma = await Turma.create({
+            codigo: nomeTurma,
+            descricao: descricao,
+            inicio: inicio,
+            fim: fim,
+            fotos: 'vazio'
+        });
 
-        const findCpf = await Usuario.findOne({ where: { cpf: cpf } });
-
-        // const cpf = req.body.cpf
-
-        // const cpfValido = await Usuario.findOne({ where: { cpf: cpf } });
-
-        if (findCpf) {
-            // Retorno de uma mensagem de sucesso se um usuário com o mesmo CPF já existir
+        if (createTurma) {
             return res.json({
-                ok: "true",
+                ok: true,
+                message: "Turma criada com sucesso'"
             });
         } else {
-            // Retorno de uma mensagem de erro se o usuário com o CPF não existir
-            return res.json({
-                ok: "false",
+            return res.status(500).json({
+                ok: false,
+                message: 'Erro ao criar a turma'
             });
-        }        
-
-
+        }
     } catch (err) {
         console.error(err);
         res.status(500).json({
@@ -35,4 +36,4 @@ exports.getCpf = async (req, res) => {
             message: 'Internal Server Error',
         });
     }
-}
+};

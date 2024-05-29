@@ -1,56 +1,48 @@
-import { useState } from 'react';
 import './styles/form.css';
+import { useState } from 'react';
 
-export default function Cadas1() {
-  const [cpf, setCpf] = useState('');
+export default function Cadas1({ setUser }) {
+
   const [nome, setNome] = useState('');
-  const [message, setMessage] = useState('');
-
-  const onChangeCpf = (evt) => {
-    setCpf(evt.target.value);
-  };
+  const [ cpf, setCpf ] = useState('');
 
   const onChangeNome = (evt) => {
     setNome(evt.target.value);
-  };
+  }
 
-  const sendE1 = async (evt) => {
-    evt.preventDefault();
-    try {
-      const response = await fetch('http://localhost:3000/teste', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ cpf, nome })
-      });
+  const onChangeCpf = (evt) => {
+    setCpf(evt.target.value)
+  }
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok ' + response.statusText);
-      }
 
-      const json = await response.json();
-      console.log(json);
-      setMessage('Cadastro realizado com sucesso!');
-    } catch (err) {
-      console.log(err);
-      setMessage('Ocorreu um erro ao realizar o cadastro.');
-    }
-  };
+  const sendForm = async (evt) => {
+    evt.preventDefault()
+    sessionStorage.setItem('nome', nome)
+    sessionStorage.setItem('cpf', cpf)
+    setUser(1)
+  }
+
+ // sessionStorage.getItem('key', nome)
+
+  //Fazer um post para o back - end do CPF
+
+  //Verificação do cpf pelo back-end, utilizando alguma api já pronta
+
+  //Retorno da resposta, se for verdadeiro o cpf, salva no sessionStorage
 
   return (
     <>
-      <form className="form-pai" onSubmit={sendE1} method='post'>
+      <form className="form-pai" method='post' onSubmit={sendForm}>
         <div className="interaction">
           <div className="mb-3">
-            <h3 htmlFor="formTitle" className="form-label">Cadastro</h3>
+            <h3 className="form-label">Cadastro</h3>
             <div id="formHelp" className="form-text">Bem-vindo(a) ao Portal Online SENAI-SP</div>
           </div>
           <div className="mb-3">
             <label htmlFor="inputNome" className="form-label">Nome do Usuário</label>
             <input
               type="text"
+              name='nome'
               value={nome}
               onChange={onChangeNome}
               className="form-control input-usuario"
@@ -61,7 +53,7 @@ export default function Cadas1() {
           <div className="mb-3">
             <label htmlFor="inputCpf" className="form-label">CPF</label>
             <input
-              type="text"
+              type="number"
               name='cpf'
               value={cpf}
               onChange={onChangeCpf}
@@ -72,7 +64,6 @@ export default function Cadas1() {
           </div>
           <div className="form-check"></div>
           <button type="submit" className="button-avancar btn btn-danger">Avançar</button>
-          {message && <div className="mt-3">{message}</div>}
         </div>
       </form>
     </>

@@ -16,9 +16,9 @@ export default function Cadastro() {
     return (
         <>
             {status === 0 ? (
-                <Cadas1 user={status} setUser={setStatus} />
+                <Cadas1 user={status} setUser={setStatus}/>
             ) : status === 1 ? (
-                <Cadas2 user={status} setUSer={setStatus}/>
+                <Cadas2 user={status} setUser={setStatus}/>
             ) : status === 2 ? (
                 <Cadas3 user={status} setUser={setStatus}/>
             ) : status === 3 ? (

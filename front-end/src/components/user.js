@@ -29,7 +29,7 @@ export default function User({ setUser }) {
       if (json.ok === 'true') {
         // Muda o estado do usuário para 1
         setUser(1);
-        localStorage.setItem('key', cpf);
+        sessionStorage.setItem('key', cpf);
 
       }
 
