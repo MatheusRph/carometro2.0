@@ -4,6 +4,7 @@
 
 /* createpaste.css */
 .button-add-paste {
+    color: black;
     background-color: #FBF8F8; /* Alterando a cor de fundo */
     margin: 5vh;
     width: 40vh;

@@ -1,0 +1,72 @@
+.container{
+    background-color: white;
+    border: 2px solid black;
+    margin: 2vw;
+    height: 80vh;
+    /* scrollbar-width: thin; 
+    scrollbar-color: transparent transparent;  */
+}
+
+.responsive div {
+    width: 50%;
+}
+
+.col1{
+    height: 20vh;
+}
+
+.title{
+    display: flex;
+    justify-content: end;
+    flex-grow: 1;
+}
+
+/* createpaste.css */
+.button-add-paste {
+    padding: 0;
+    border: none;
+    background-color: #FBF8F8; /* Alterando a cor de fundo */
+    margin: 5vh;
+    width: 40vh;
+    height: 10vh; /* Aumentando a altura para 30vh */
+    -webkit-box-shadow: 5px 6px 5px 0px rgba(0,0,0,0.61); 
+    box-shadow: 5px 6px 5px 0px rgba(0,0,0,0.61);
+}
+
+.block{
+    height: 100px;
+    border: solid 3px black;
+}
+
+/* createpaste.css */
+.button-add-paste p {
+    font-size: xx-large;
+    margin: 1vh;
+    width: 100%;
+}
+
+/* Animação para celular */
+@media (max-width: 767px) {
+
+    .responsive div {
+        width: 10%;
+        justify-content: center;
+    }
+
+    .button-add-paste{
+        margin: 10px;
+        height: 18vw;
+    }
+
+    .button-add-paste p {
+        color: black;
+        font-size: 100%;
+    }
+}
+
+/* Animação para tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .animate-tablet {
+        animation: tabletAnimation 2s infinite alternate;
+    }
+}

@@ -1,4 +1,5 @@
 import { createFactory, useState } from "react";
+import './styles/form.css'
 
 export default function User({ setUser }) {
   const [cpf, setCpf] = useState('');
