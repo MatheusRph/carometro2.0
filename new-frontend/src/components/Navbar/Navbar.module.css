@@ -1,0 +1,33 @@
+/* src/components/Navbar.module.css */
+
+.navbar {
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,0.48511904761904767) 0%, rgba(0,0,0,0.2358193277310925) 47%, rgba(0,0,0,0) 100%);
+}
+
+/* .navbar div {
+    background-color: black;
+} */
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin: 0 10px;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
