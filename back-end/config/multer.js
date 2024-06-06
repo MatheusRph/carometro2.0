@@ -14,7 +14,7 @@
     // Configuração do multer para armazenar os uploads no diretório especificado
     const storage = multer.diskStorage({
         destination: (req, file, cb) => {
-            cb(null, path.join(__dirname, '../images')); // Caminho relativo usando __dirname
+            cb(null, path.join(__dirname, '../../new-frontend/public/image')); // Caminho relativo usando __dirname
         },
         filename: (req, file, cb) => {
             cb(null, generateUniqueFilename(file.originalname));

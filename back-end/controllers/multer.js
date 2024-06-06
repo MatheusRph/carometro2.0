@@ -12,7 +12,7 @@ exports.uploadFile = async (req, res) => {
             return res.status(400).send('Nenhum arquivo enviado ou o nome do campo do formulário está incorreto.');
         }
 
-        const fileName = '/uploads/' + req.file.filename;
+        const fileName = '/image/' + req.file.filename;
         console.log(fileName);
 
         const turma = await Turma.findOne({ where: { codigo: codigo } });
@@ -24,7 +24,7 @@ exports.uploadFile = async (req, res) => {
             console.log('Turma não encontrada com o código fornecido:', codigo);
         }
 
-        const filePath = path.join('/uploads', req.file.filename); // Caminho relativo para o cliente
+        const filePath = path.join('/image', req.file.filename); // Caminho relativo para o cliente
         res.json({ message: 'Arquivo enviado com sucesso!', filePath: filePath });
     } catch (error) {
         console.error('Erro ao fazer upload do arquivo:', error);

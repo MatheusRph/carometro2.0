@@ -3,9 +3,15 @@
   display: flex;
   background-color: white;
   width: 80%;
-  flex: 0.8;
+  height: 80vh; /* Define que a main ocupa 80% da altura da viewport */
   align-items: center;
+  overflow-y: auto;
 }
+
+.main::-webkit-scrollbar {
+  width: 0; /* Torna a barra de rolagem invisível no Chrome e no Safari */
+}
+
 
 .title {
   height: 15%;
@@ -19,10 +25,11 @@
 }
 
 .container {
+  padding: 1rem;
   display: flex;
   background-color: transparent;
-  flex: 0.9 1;
-}
+  flex: 0.9; /* Define que o container ocupa 80% do espaço disponível dentro da main */
+} 
 
 .description {
   display: inherit;
@@ -64,15 +71,16 @@
 }
 
 .card {
-  padding: 1rem 1.2rem;
-  border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
+  display: flex;
+  padding: 0.5rem 0.8rem;
   border: 1px solid rgba(var(--card-border-rgb), 0);
   transition: background 200ms, border 200ms;
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
   /* Aumento da opacidade para 0.4 */
   transition: 0.3s;
+  width: 40vh;
+  height: 35vh;
 }
 
 .card span {
@@ -80,8 +88,8 @@
   transition: transform 200ms;
 }
 
-.card h2 {
-  font-weight: 600;
+.card h5 {
+  font-size: x-large;
   margin-bottom: 0.7rem;
 }
 
@@ -133,7 +141,7 @@
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
-    background: rgba(var(--card-rgb), 0.1);
+    background: rgb(209, 209, 209);
     border: 1px solid rgba(var(--card-border-rgb), 0.15);
   }
 
@@ -150,6 +158,14 @@
 
 /* Mobile */
 @media (max-width: 700px) {
+
+  .container {
+    flex: 0 0 100%;
+    max-width: 100%;
+    justify-content: center;
+  }
+  
+
   .content {
     padding: 4rem;
   }
@@ -163,9 +179,11 @@
 
   .card {
     padding: 1rem 2.5rem;
+    width: 100%;
+    height: 40vh;
   }
 
-  .card h2 {
+  .card h5 {
     margin-bottom: 0.5rem;
   }
 
@@ -223,6 +241,11 @@
 
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
+
+  .container{
+    justify-content: center;
+  }
+
   .grid {
     grid-template-columns: repeat(2, 50%);
   }

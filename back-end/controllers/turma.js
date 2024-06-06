@@ -25,7 +25,7 @@ exports.createTurma = async (req, res) => {
     try {
         const { codigo, descricao, inicio, fim } = req.body;
 
-        const fileName = '/uploads/' + req.file.filename;
+        const fileName = '/image/' + req.file.filename;
 
         const camposObrigatorios = ['codigo', 'descricao', 'inicio', 'fim'];
 
