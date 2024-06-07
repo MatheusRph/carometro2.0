@@ -39,7 +39,7 @@ export default function Home() {
             {/* Mapeando os dados das turmas e renderizando um card para cada turma */}
             {turmas && turmas.map((turma, index) => (
               <div key={index} className={`card ${styles.card}`}>
-                <Image src={turma.fotos} className="card-img-top image m-0" width={300} height={100} />
+                <Image src={turma.fotos} className="card-img-top image m-0" width={192} height={108} />
                 <div className="card-body d-flex flex-column">
                   <h5 className="card-title">{turma.codigo}</h5>
                   <p className="card-text">{turma.descricao}</p>

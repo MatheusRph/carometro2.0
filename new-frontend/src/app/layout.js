@@ -14,8 +14,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="pt-br" data-lt-installed="true">
+      <body  data-new-gr-c-s-check-loaded="14.1115.0" data-gr-ext-installed cz-shortcut-listen="true" className={inter.className}>
         {children}
         <BootstrapClient></BootstrapClient>
         </body>
