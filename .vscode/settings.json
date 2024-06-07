@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "/subscriptions/15965a29-d4cf-4c4d-b42e-6d547b38fa48/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/project-carometro",
-    "appService.deploySubpath": "new-frontend"
-}
