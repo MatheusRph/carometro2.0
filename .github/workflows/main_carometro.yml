@@ -59,4 +59,4 @@ jobs:
           app-name: 'carometro'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_72558751E9C447A681F0136ECC7DCB5C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9CD857B0C40A43CEA5EE80537E9437F2 }}
