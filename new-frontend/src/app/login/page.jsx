@@ -23,7 +23,7 @@ export default function Login() {
                                 <h3 className="form-label">Login</h3>
                                 <div id="helps" className="form-text">Bem-vindo(a) ao Portal Online SENAI-SP</div>
                             </div>
-                            <Input label="Usuário"  type={"text"} placeholder={'Insira seu CPF'} className={`form-control ${styles.input}`}></Input>
+                            <Input label="Usuário" type={"text"} placeholder={'Insira seu CPF'} className={`form-control ${styles.input}`}></Input>
                             <Button type="submit" className={`btn-danger w-100 ${styles.button}`}>Avançar</Button>
                         </div>
                     </Form>

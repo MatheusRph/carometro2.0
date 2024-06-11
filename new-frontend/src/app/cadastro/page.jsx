@@ -6,24 +6,62 @@ import Form from '@/components/Form/Form'
 import Input from '@/components/Input/Input'
 import Button from '@/components/Button/Button'
 
+
 export default function Cadastro() {
+
+    const [status, setStatus] = useState(0);
+
     return (
         <>
+
+
+            {status === 0 ? (
+                <main className={`rounded-4 flex-column ${styles.main}`}>
+                    <Form>
+
+                        <div className="mb-3">
+                            <h3 className="form-label">Cadastro</h3>
+                            <div id="helps" className="form-text">Bem-vindo(a) ao Portal Online SENAI-SP</div>
+                        </div>
+                        <Input label={'Nome do usuário'} type={'text'} placeholder={'Insira o nome do usuário'} className={`form-control ${styles.input}`}></Input>
+                        <Input label="CPF" type={"text"} placeholder={'Insira o CPF'} className={`${styles.input}`}></Input>
+                        <Button type="submit" className={`btn-danger w-100 ${styles.button}`}>Avançar</Button>
+
+                    </Form>
+                </main>
+            ) : status === 1 ? (
+                <Cadas2 user={status} setUser={setStatus} />
+            ) : (null)}
+
+
             <Header>
                 <Navbar></Navbar>
             </Header>
 
             <Container>
-            <main className={`rounded-4 flex-column ${styles.main}`}>
+                <main className={`rounded-4 flex-column ${styles.main}`}>
                     <Form>
-                        <div className="interaction">
-                            <div className="mb-3">
-                                <h3 className="form-label">Cadastro</h3>
-                                <div id="helps" className="form-text">Bem-vindo(a) ao Portal Online SENAI-SP</div>
-                            </div>
-                            <Input label="Usuário"  type={"text"} placeholder={'Insira seu CPF'} className={`form-control ${styles.input}`}></Input>
-                            <Button type="submit" className={`btn-danger w-100 ${styles.button}`}>Avançar</Button>
+
+                        <div className="mb-3">
+                            <h3 className="form-label">Cadastro</h3>
+                            <div id="helps" className="form-text">Bem-vindo(a) ao Portal Online SENAI-SP</div>
                         </div>
+                        <Input label={'Nome do usuário'} type={'text'} placeholder={'Insira o nome do usuário'} className={`form-control ${styles.input}`}></Input>
+                        <Input label="CPF" type={"text"} placeholder={'Insira o CPF'} className={`${styles.input}`}></Input>
+                        <Button type="submit" className={`btn-danger w-100 ${styles.button}`}>Avançar</Button>
+
+                    </Form>
+                </main>
+
+                <main className={`rounded-4 flex-column ${styles.main}`}>
+                    <Form>
+                        <div className='mb-3'>
+                            <h3 className='form-label'>Cadastro</h3>
+                            <div id="helps" className='form-text'>Bem vindo(a) ao Portal Online do SENAI-SP</div>
+                        </div>
+                        <Input label={'Email'} type={'email'} placeholder={'Digite o email'} className={`${styles.input}`}></Input>
+                        <Input label={'Senha'} type={'password'} placeholder={'Digite a senha'} className={`${styles.input}`}></Input>
+                        <Button type={'submit'} className={`btn-danger w-100 ${styles.button}`}>Avançar</Button>
                     </Form>
                 </main>
             </Container>
