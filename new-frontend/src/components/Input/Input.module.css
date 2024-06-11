@@ -1,3 +1,9 @@
 .input_usuario{
     color: black;
 }
+
+.input_usuario:focus {
+    box-shadow: none; /* Remover sombra */
+    border-color: #ced4da; /* Manter a cor da borda padrão */
+    background-color: lightgray; /* Alterar a cor de fundo */
+}
