@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar/Navbar";
 import styles from "./page.module.css";
 import "./style.css"
 import Form from "@/components/Form/Form";
+import Button from "@/components/Button/Button";
+import Input from "@/components/Input/Input";
 
 
 export default function Login() {
@@ -21,15 +23,8 @@ export default function Login() {
                                 <h3 className="form-label">Login</h3>
                                 <div id="helps" className="form-text">Bem-vindo(a) ao Portal Online SENAI-SP</div>
                             </div>
-                            <div className="mb-3">
-                                <label className="form-label">Usuário</label>
-                                <input
-                                    type="text"
-                                    className="form-control input-usuario"
-                                    placeholder="Insira seu CPF"
-                                />
-                            </div>
-                            <button type="submit" className="button-avancar btn btn-danger">Avançar</button>
+                            <Input label="Usuário"  type={"text"} placeholder={'Insira seu cpf'} className={`form-control ${styles.input}`}></Input>
+                            <Button type="submit" className={"button-avancar btn btn-danger"}>Avançar</Button>
                         </div>
                     </Form>
                 </main>

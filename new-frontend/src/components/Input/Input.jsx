@@ -1,10 +1,12 @@
-export default function FormInput({ label, type, id, name, placeholder }) {
+import style from "./Input.module.css"
+
+export default function Input({ label, type, id, name, placeholder, className }) {
     return (
         <div className="mb-3">
             <label htmlFor={id} className="form-label">{label}</label>
             <input
                 type={type}
-                className="form-control input-usuario"
+                className={`${className} ${style.input_usuario}`}
                 id={id}
                 name={name}
                 placeholder={placeholder}
