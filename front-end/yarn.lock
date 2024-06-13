@@ -89,10 +89,15 @@
   dependencies:
     glob "10.3.10"
 
-"@next/swc-win32-x64-msvc@14.3.0-canary.9":
+"@next/swc-linux-x64-gnu@14.3.0-canary.9":
   version "14.3.0-canary.9"
-  resolved "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-14.3.0-canary.9.tgz"
-  integrity sha512-zkm/FzdSostlGsSkKnqtGxFg7nmBcAr69PQe9puenqUN+Q3bsHUsjYS2vK0LiqDvziQAuBCbX4ARsTAVQIxq0Q==
+  resolved "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-14.3.0-canary.9.tgz"
+  integrity sha512-eY1+SNaWzKxTMO5G4fFVngERP/pb9oPrhILmNTlzX3BVEBavfklQRTCHdJs3Nc6aM/09wxGpZGpvE03CN/I4jA==
+
+"@next/swc-linux-x64-musl@14.3.0-canary.9":
+  version "14.3.0-canary.9"
+  resolved "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-14.3.0-canary.9.tgz"
+  integrity sha512-oW73wXLd0uf8c9ZqR212qRdPuUQIacbMWKrbAzYbdE/Jk+w2+MxwEd021qOLysGMPea3rQ4HilELmWsp082p7g==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

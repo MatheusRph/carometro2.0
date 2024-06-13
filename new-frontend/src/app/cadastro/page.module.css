@@ -1,0 +1,14 @@
+.main {
+    background-color: white;
+    width: 71vh; 
+    margin-top: 0;
+    margin-bottom: 0;
+}    
+
+.input{
+  height: 6.5vh;
+}
+
+.button{
+    height: 40px;
+}

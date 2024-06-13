@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import BootstrapClient from "@/components/BootstrapClient";
+import React from 'react';
 
 
 
