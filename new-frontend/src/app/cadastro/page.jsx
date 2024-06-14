@@ -10,69 +10,39 @@ import Button from '@/components/Button/Button';
 import { useState } from 'react';
 
 export default function Cadastro() {
-    const [cep, setCep] = useState('');
-    const [address, setAddress] = useState({
-        rua: '',
-        bairro: '',
-        cidade: '',
-        estado: ''
-    });
 
-    const limpaFormularioCep = () => {
-        setAddress({
-            rua: '',
-            bairro: '',
-            cidade: '',
-            estado: ''
-        });
-    };
+    const [status, setStatus] = useState(2); 
 
-    const meuCallback = (conteudo) => {
-        if (!('erro' in conteudo)) {
-            setAddress({
-                rua: conteudo.logradouro,
-                bairro: conteudo.bairro,
-                cidade: conteudo.localidade,
-                estado: conteudo.uf
-            });
-        } else {
-            limpaFormularioCep();
-            alert('CEP não encontrado.');
-        }
-    };
+    const [ cep, setCep ] = useState('')
 
-    const searchCep = (valor) => {
-        const cleanedCep = valor.replace(/\D/g, '');
+    const onChangeCep = (evt) => {
+        setCep(evt.target.value)
+        cep.replace(/\D/g, '');
+    }
 
-        if (cleanedCep !== '') {
-            const validacep = /^[0-9]{8}$/;
+    const sendForm = (evt) => {
+        const pesquisacep = (evt) => {
+            if (cep !== "") {
 
-            if (validacep.test(cleanedCep)) {
-                setAddress({
-                    rua: '...',
-                    bairro: '...',
-                    cidade: '...',
-                    estado: '...'
-                });
+                // //Não sei pra que serve isso dps eu vejo
+                // const validacep = /^[0-9]{8}$/;
+                // if (validacep.test(cleanedCep)) {
+                //     setAddress({
+                //         rua: '...',
+                //         bairro: '...',
+                //         cidade: '...',
+                //         estado: '...'
+                //     });
 
-                fetch(`https://viacep.com.br/ws/${cleanedCep}/json/`)
+                    fetch(`https://viacep.com.br/ws/${cep}/json/`)
                     .then(response => response.json())
-                    .then(data => meuCallback(data))
-                    .catch(() => {
-                        limpaFormularioCep();
-                        alert('Erro ao buscar CEP.');
-                    });
-            } else {
-                limpaFormularioCep();
-                alert('Formato de CEP inválido.');
+                    .then(data => data);
             }
-        } else {
-            limpaFormularioCep();
         }
-    };
+    }
 
-    const [status, setStatus] = useState(3);
-
+    console.log(cep)
+    
     return (
         <>
             <Header>
@@ -114,7 +84,7 @@ export default function Cadastro() {
                                 <div id="helps" className='form-text'>Bem vindo(a) ao Portal Online do SENAI-SP</div>
                             </div>
                             <Input label={'Telefone'} type={'tel'} placeholder={'Digite o telefone'} className={`${styles.input}`} />
-                            <Input label={'CEP'} type={'number'} placeholder={'Digite o CEP'} className={`${styles.input}`} onBlur={(e) => searchCep(e.target.value)} />
+                            <Input label={'CEP'} type={'number'} placeholder={'Digite o CEP'} onChange={onChangeCep} className={`${styles.input}`}/>
                             <Button type={'button'} className={`btn-danger w-100 ${styles.button}`} onClick={() => setStatus(3)}>Avançar</Button>
                         </Form>
                     </main>
@@ -126,8 +96,8 @@ export default function Cadastro() {
                                 <h3 className='form-label'>Cadastro</h3>
                                 <div id="helps" className='form-text'>Bem vindo(a) ao Portal Online do SENAI-SP</div>
                             </div>
-                            <Input label={'Estado'} type={'text'} placeholder={'Digite o estado'} value={address.estado} className={`${styles.input}`} readOnly />
-                            <Input label={'Cidade'} type={'text'} placeholder={'Digite a cidade'} value={address.cidade} className={`${styles.input}`} readOnly />
+                            <Input label={'Estado'} type={'text'} placeholder={'Digite o estado'} className={`${styles.input}`} readOnly />
+                            <Input label={'Cidade'} type={'text'} placeholder={'Digite a cidade'} className={`${styles.input}`} readOnly />
                             <Button type={'button'} className={`btn-danger w-100 ${styles.button}`} onClick={() => setStatus(4)}>Avançar</Button>
                         </Form>
                     </main>
@@ -139,8 +109,8 @@ export default function Cadastro() {
                                 <h3 className='form-label'>Cadastro</h3>
                                 <div id="helps" className='form-text'>Bem vindo(a) ao Portal Online do SENAI-SP</div>
                             </div>
-                            <Input label={'Bairro'} type={'text'} placeholder={'Digite o bairro'} value={address.bairro} className={`${styles.input}`} readOnly />
-                            <Input label={'Rua'} type={'text'} placeholder={'Digite a rua'} value={address.rua} className={`${styles.input}`} readOnly />
+                            <Input label={'Bairro'} type={'text'} placeholder={'Digite o bairro'} className={`${styles.input}`} readOnly />
+                            <Input label={'Rua'} type={'text'} placeholder={'Digite a rua'} className={`${styles.input}`} readOnly />
                             <Button type={'button'} className={`btn-danger w-100 ${styles.button}`} onClick={() => setStatus(5)}>Avançar</Button>
                         </Form>
                     </main>
